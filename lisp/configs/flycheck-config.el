@@ -10,8 +10,9 @@
   (setq flycheck-disabled-checkers '(emacs-lisp-checkdoc))
   (set-face-attribute 'flycheck-error nil :foreground "#fb4934")
   (set-face-attribute 'flycheck-warning nil :foreground "#fabd2f")
-  (set-face-attribute 'flycheck-info nil :foreground "#8ec07c")
-  (define-key flycheck-mode-map (kbd "M-n") #'flycheck-next-error)
-  (define-key flycheck-mode-map (kbd "M-p") #'flycheck-prev-error))
+  (set-face-attribute 'flycheck-info nil :foreground "#8ec07c"))
+
+(global-set-key (kbd "M-n") 'next-error)
+(global-set-key (kbd "M-p") 'previous-error)
 
 (provide 'flycheck-config)

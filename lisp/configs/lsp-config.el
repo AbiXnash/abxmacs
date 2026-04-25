@@ -49,32 +49,36 @@
 (use-package lsp-mode
   :ensure t
   :commands (lsp lsp-deferred)
-  :hook ((go-mode . lsp-deferred)
-         (go-ts-mode . lsp-deferred)
-         (lua-mode . my/lua-mode-setup)
-         (lua-mode . lsp-deferred)
-         (js-mode . lsp-deferred)
-         (js-ts-mode . lsp-deferred)
-         (typescript-mode . lsp-deferred)
-         (typescript-ts-mode . lsp-deferred)
-         (tsx-ts-mode . lsp-deferred)
-         (json-mode . lsp-deferred)
-         (json-ts-mode . lsp-deferred)
-         (python-mode . lsp-deferred)
-         (python-ts-mode . lsp-deferred)
-         (rust-mode . lsp-deferred)
-         (rust-ts-mode . lsp-deferred)
-         (zig-mode . lsp-deferred)
-         (c-mode . lsp-deferred)
-         (c-ts-mode . lsp-deferred)
-(c++-mode . lsp-deferred)
-    (c++-ts-mode . lsp-deferred)
-    (java-mode . lsp-deferred)
-    (java-ts-mode . lsp-deferred)
-    (yaml-mode . lsp-deferred)
-    (yaml-ts-mode . lsp-deferred)
-    (xml-mode . lsp-deferred)
-    (nxml-mode . lsp-deferred))
+  :hook ((lsp-mode . lsp-modeline-mode)
+        (lsp-mode . lsp-headerline-breadcrumb-mode)
+        (go-mode . lsp-deferred)
+        (go-ts-mode . lsp-deferred)
+        (lua-mode . my/lua-mode-setup)
+        (lua-mode . lsp-deferred)
+        (lua-ts-mode . my/lua-mode-setup)
+        (lua-ts-mode . lsp-deferred)
+        (js-mode . lsp-deferred)
+        (js-ts-mode . lsp-deferred)
+        (typescript-mode . lsp-deferred)
+        (typescript-ts-mode . lsp-deferred)
+        (tsx-ts-mode . lsp-deferred)
+        (json-mode . lsp-deferred)
+        (json-ts-mode . lsp-deferred)
+        (python-mode . lsp-deferred)
+        (python-ts-mode . lsp-deferred)
+        (rust-mode . lsp-deferred)
+        (rust-ts-mode . lsp-deferred)
+        (zig-mode . lsp-deferred)
+        (c-mode . lsp-deferred)
+        (c-ts-mode . lsp-deferred)
+        (c++-mode . lsp-deferred)
+        (c++-ts-mode . lsp-deferred)
+        (java-mode . lsp-deferred)
+        (java-ts-mode . lsp-deferred)
+        (yaml-mode . lsp-deferred)
+        (yaml-ts-mode . lsp-deferred)
+        (xml-mode . lsp-deferred)
+        (nxml-mode . lsp-deferred))
   :init
   (setq lsp-keymap-prefix "C-c l")
   :custom
@@ -88,7 +92,6 @@
   (lsp-modeline-code-actions-enable t)
   (lsp-modeline-code-actions-prefix "A")
   (lsp-modeline-diagnostics-scope :workspace)
-  (lsp-diagnostics-provider :flycheck)
   (lsp-completion-provider :capf)
   (lsp-enable-snippet (package-installed-p 'yasnippet))
   (lsp-signature-auto-activate t)
@@ -112,25 +115,26 @@
                   (format "--metapath=%s" lua-ls-meta-dir)))))
   (when (file-exists-p (expand-file-name "~/go/bin/gopls"))
     (setq lsp-go-gopls-server-path (expand-file-name "~/go/bin/gopls")))
-  (dolist (entry '((go-mode . "go")
-                   (go-ts-mode . "go")
-                   (lua-mode . "lua")
-                   (js-mode . "javascript")
-                   (js-ts-mode . "javascript")
-                   (javascript-mode . "javascript")
-                   (typescript-mode . "typescript")
-                   (typescript-ts-mode . "typescript")
-                   (tsx-ts-mode . "typescriptreact")
-                   (json-mode . "json")
-                   (json-ts-mode . "json")
-                   (python-mode . "python")
-                   (python-ts-mode . "python")
-                   (rust-mode . "rust")
-                   (rust-ts-mode . "rust")
-                   (zig-mode . "zig")
-                   (c-mode . "c")
-                   (c-ts-mode . "c")
-(c++-mode . "cpp")
+(dolist (entry '((go-mode . "go")
+                    (go-ts-mode . "go")
+                    (lua-mode . "lua")
+                    (lua-ts-mode . "lua")
+                    (js-mode . "javascript")
+                    (js-ts-mode . "javascript")
+                    (javascript-mode . "javascript")
+                    (typescript-mode . "typescript")
+                    (typescript-ts-mode . "typescript")
+                    (tsx-ts-mode . "typescriptreact")
+                    (json-mode . "json")
+                    (json-ts-mode . "json")
+                    (python-mode . "python")
+                    (python-ts-mode . "python")
+                    (rust-mode . "rust")
+                    (rust-ts-mode . "rust")
+                    (zig-mode . "zig")
+                    (c-mode . "c")
+                    (c-ts-mode . "c")
+                    (c++-mode . "cpp")
                     (c++-ts-mode . "cpp")
                     (java-mode . "java")
                     (java-ts-mode . "java")
@@ -140,63 +144,58 @@
                     (nxml-mode . "xml")))
     (add-to-list 'lsp-language-id-configuration entry)))
 
-(when (package-installed-p 'lsp-ui)
-  (use-package lsp-ui
-    :ensure t
-    :after lsp-mode
-    :hook (lsp-mode . lsp-ui-mode)
-    :custom
-    (lsp-ui-doc-enable t)
-    (lsp-ui-doc-show-with-cursor t)
-    (lsp-ui-doc-show-with-mouse nil)
-    (lsp-ui-doc-delay 0.4)
-    (lsp-ui-sideline-enable t)
-    (lsp-ui-sideline-show-hover t)
-    (lsp-ui-sideline-show-code-actions t)
-    (lsp-ui-sideline-show-diagnostics t)
-    (lsp-ui-peek-enable t)
-    (lsp-ui-imenu-enable t)
-    :config
-    (setq lsp-ui-doc-border "#b8bb26")
-    (set-face-attribute 'lsp-ui-doc-background nil
+(use-package lsp-ui
+  :ensure t
+  :after lsp-mode
+  :hook (lsp-mode . lsp-ui-mode)
+  :custom
+  (lsp-ui-doc-enable t)
+  (lsp-ui-doc-show-with-cursor t)
+  (lsp-ui-doc-show-with-mouse nil)
+  (lsp-ui-doc-delay 0.4)
+  (lsp-ui-sideline-enable t)
+  (lsp-ui-sideline-show-hover t)
+  (lsp-ui-sideline-show-code-actions t)
+  (lsp-ui-sideline-show-diagnostics t)
+  (lsp-ui-peek-enable t)
+  (lsp-ui-imenu-enable t)
+  :config
+  (setq lsp-ui-doc-border "#b8bb26")
+  (set-face-attribute 'lsp-ui-doc-background nil
+                      :background 'unspecified
+                      :foreground 'unspecified)
+  (set-face-attribute 'lsp-ui-doc-header nil
+                      :background 'unspecified
+                      :foreground "#ebdbb2"
+                      :box 'unspecified)
+  (set-face-attribute 'lsp-ui-doc-highlight-hover nil
+                      :background 'unspecified
+                      :underline '(:style line :color "#fabd2f"))
+  (dolist (face '(lsp-face-highlight-textual
+                  lsp-face-highlight-read
+                  lsp-face-highlight-write))
+    (set-face-attribute face nil
+                        :inherit nil)
+    (set-face-attribute face nil
+                        :foreground 'unspecified
                         :background 'unspecified
-                        :foreground 'unspecified)
-    (set-face-attribute 'lsp-ui-doc-header nil
-                        :background 'unspecified
-                        :foreground "#ebdbb2"
-                        :box 'unspecified)
-    (set-face-attribute 'lsp-ui-doc-highlight-hover nil
-                        :background 'unspecified
-                        :underline '(:style line :color "#fabd2f"))
-    (dolist (face '(lsp-face-highlight-textual
-                    lsp-face-highlight-read
-                    lsp-face-highlight-write))
-      (set-face-attribute face nil
-                          :inherit nil)
-      (set-face-attribute face nil
-                          :foreground 'unspecified
-                          :background 'unspecified
-                          :distant-foreground 'unspecified
-                          :box 'unspecified
-                          :weight 'normal
-                          :slant 'normal
-                          :extend nil
-                          :underline '(:style line :color "#fabd2f")))))
+                        :distant-foreground 'unspecified
+                        :box 'unspecified
+                        :weight 'normal
+                        :slant 'normal
+                        :extend nil
+                        :underline '(:style line :color "#fabd2f"))))
 
 (defun my/setup-env-modes ()
   "Setup special file modes for .env and .gitignore files."
-  (when (and (boundp 'dotenv-mode) dotenv-mode)
-    (dotenv-mode))
-  (when (and (boundp 'gitignore-mode) gitignore-mode)
+  (when (and (featurep 'gitignore-mode) (fboundp 'gitignore-mode))
     (gitignore-mode)))
 
-(use-package gitignore-mode
+;; dotenv-mode unavailable on package archives
+
+(use-package git-modes
   :mode ("\\.gitignore\\'" "\\.gitattributes\\'" "\\.gitmodules\\'"))
 
-(use-package dotenv
-  :mode ("\\.env\\.'" "\\.env\\..+\\'" "\\.envrc\\'")
-  :hook (dotenv-mode . my/setup-env-modes)
-  :init
-  (setq dotenv-highlight-line t))
+;; dotenv-mode unavailable on package archives
 
 (provide 'lsp-config)
