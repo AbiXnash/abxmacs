@@ -1,0 +1,1 @@
+("~/dev/game/hyy/" "~/dev/game/ping-pong/" "~/dev/leetcode/" "~/.emacs.d/")
