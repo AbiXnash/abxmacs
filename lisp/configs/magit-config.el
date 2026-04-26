@@ -12,11 +12,7 @@
          (magit-post-refresh . diff-hl-magit-post-refresh))
   :init
   (global-diff-hl-mode 1)
-  (diff-hl-flydiff-mode 1)
-  (setq diff-hl-update-async t)
-  (setq diff-hl-flydiff-delay 0.5)
-  (setq diff-hl-global-modes '(not image-mode pdf-view-mode))
-  (setq diff-hl-draw-borders nil))
+  (setq diff-hl-show-hunk-markers nil))
 
 (use-package magit-todos
   :ensure t
