@@ -1,1 +1,0 @@
-("~/.emacs.d/" "~/dev/game/ping-pong/" "~/dev/leetcode/" "/opt/homebrew/" "~/dev/game/hyy/")
