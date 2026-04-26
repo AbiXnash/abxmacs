@@ -1,6 +1,4 @@
 ;; General keybindings
-(global-set-key (kbd "M-x") 'consult-M-x)
-(global-set-key (kbd "C-x C-b") 'consult-buffer)
 (global-set-key (kbd "C-x C-f") 'find-file)
 
 ;; Window navigation (like vim easy-motion)
@@ -20,15 +18,6 @@
 ;; Treemacs
 (global-set-key (kbd "C-c t") 'treemacs)
 (global-set-key (kbd "C-c T") 'treemacs-select-window)
-
-;; Harpoon
-(global-set-key (kbd "C-c h a") 'my/harpoon-add)
-(global-set-key (kbd "C-c h r") 'my/harpoon-remove)
-(global-set-key (kbd "C-c h 1") (lambda () (interactive) (my/harpoon-goto 1)))
-(global-set-key (kbd "C-c h 2") (lambda () (interactive) (my/harpoon-goto 2)))
-(global-set-key (kbd "C-c h 3") (lambda () (interactive) (my/harpoon-goto 3)))
-(global-set-key (kbd "C-c h 4") (lambda () (interactive) (my/harpoon-goto 4)))
-(global-set-key (kbd "C-c h s") 'my/harpoon-show)
 
 ;; Avy - fast jumping
 (global-set-key (kbd "M-g g") 'avy-goto-line)
@@ -59,4 +48,4 @@
 ;; Indent/format
 (global-set-key (kbd "M-i") 'tab-to-tab-stop)
 
-(provide 'keymaps)
+(provide 'keymaps/keymaps)

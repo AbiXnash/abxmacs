@@ -32,4 +32,4 @@
 
   (global-set-key (kbd "C-M-\\") #'format-all-buffer-or-region))
 
-(provide 'format-config)
+(provide 'configs/format-config)

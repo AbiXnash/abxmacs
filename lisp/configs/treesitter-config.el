@@ -12,4 +12,4 @@
 (when (fboundp 'lua-ts-mode)
   (add-to-list 'auto-mode-alist '("\\.lua\\'" . lua-ts-mode)))
 
-(provide 'treesitter-config)
+(provide 'configs/treesitter-config)

@@ -1,94 +1,29 @@
 (use-package doom-modeline
   :ensure t
   :init
-  (setq doom-modeline-support-imenu t)
   (setq doom-modeline-height 25)
   (setq doom-modeline-bar-width 4)
-  (setq doom-modeline-hud nil)
-  (setq doom-modeline-window-width-limit 85)
-  (setq doom-modeline-spc-face-overrides nil)
-  (setq doom-modeline-project-detection 'auto)
-  (setq doom-modeline-buffer-file-name-style 'auto)
-  (setq doom-modeline-icon t)
-  (setq doom-modeline-major-mode-icon t)
-  (setq doom-modeline-major-mode-color-icon t)
-  (setq doom-modeline-buffer-state-icon t)
-  (setq doom-modeline-buffer-modification-icon t)
-  (setq doom-modeline-lsp-icon t)
-  (setq doom-modeline-time-icon t)
-  (setq doom-modeline-time-live-icon t)
-  (setq doom-modeline-time-analogue-clock t)
-  (setq doom-modeline-time-clock-size 0.7)
-  (setq doom-modeline-unicode-number t)
-  (setq doom-modeline-unicode-fallback nil)
-  (setq doom-modeline-buffer-name t)
-  (setq doom-modeline-highlight-modified-buffer-name t)
-  (setq doom-modeline-column-zero-based t)
-  (setq doom-modeline-percent-position '(-3 "%p"))
-  (setq doom-modeline-position-line-format '("L%l"))
-  (setq doom-modeline-position-column-format '("C%c"))
-  (setq doom-modeline-position-column-line-format '("%l:%c"))
-  (setq doom-modeline-minor-modes nil)
-  (setq doom-modeline-selection-info t)
-  (setq doom-modeline-enable-word-count nil)
-  (setq doom-modeline-continuous-word-count-modes '(markdown-mode gfm-mode org-mode))
-  (setq doom-modeline-enable-buffer-position t)
-  (setq doom-modeline-buffer-encoding t)
-  (setq doom-modeline-indent-info nil)
-  (setq doom-modeline-total-line-number nil)
-  (setq doom-modeline-vcs-icon t)
-  (setq doom-modeline-vcs-max-length 15)
-  (setq doom-modeline-vcs-display-function #'doom-modeline-vcs-name)
-  (setq doom-modeline-vcs-state-faces-alist
-        '((needs-update . (doom-modeline-warning bold))
-          (removed . (doom-modeline-urgent bold))
-          (conflict . (doom-modeline-urgent bold))
-          (unregistered . (doom-modeline-urgent bold))))
-  (setq doom-modeline-check-icon t)
-  (setq doom-modeline-check 'auto)
-  (setq doom-modeline-number-limit 99)
-  (setq doom-modeline-project-name t)
-  (setq doom-modeline-workspace-name t)
-  (setq doom-modeline-persp-name t)
-  (setq doom-modeline-display-default-persp-name nil)
-  (setq doom-modeline-persp-icon t)
-  (setq doom-modeline-lsp t)
+  (setq doom-modeline-icon nil)
+  (setq doom-modeline-major-mode-icon nil)
+  (setq doom-modeline-lsp-icon nil)
+  (setq doom-modeline-time-icon nil)
+  (setq doom-modeline-time nil)
+  (setq doom-modeline-battery nil)
+  (setq doom-modeline-vcs-icon nil)
   (setq doom-modeline-github nil)
-  (setq doom-modeline-github-interval (* 30 60))
-  (setq doom-modeline-modal t)
-  (setq doom-modeline-modal-icon t)
-  (setq doom-modeline-modal-modern-icon t)
-  (setq doom-modeline-always-show-macro-register nil)
   (setq doom-modeline-mu4e nil)
-  (setq doom-modeline-gnus t)
-  (setq doom-modeline-gnus-timer 2)
-  (setq doom-modeline-gnus-excluded-groups '("dummy.group"))
-  (setq doom-modeline-irc t)
-  (setq doom-modeline-irc-stylize 'identity)
-  (setq doom-modeline-irc-priority-only nil)
-  (setq doom-modeline-battery t)
-  (setq doom-modeline-time t)
-  (setq doom-modeline-display-misc-in-all-mode-lines t)
-  (setq doom-modeline-remote-host t)
-  (setq doom-modeline-buffer-file-name-function #'identity)
-  (setq doom-modeline-buffer-file-truename-function #'identity)
-  (setq doom-modeline-env-version t)
-  (setq doom-modeline-env-enable-python t)
-  (setq doom-modeline-env-enable-ruby t)
-  (setq doom-modeline-env-enable-perl t)
-  (setq doom-modeline-env-enable-go t)
-  (setq doom-modeline-env-enable-elixir t)
-  (setq doom-modeline-env-enable-rust t)
-  (setq doom-modeline-env-python-executable "python")
-  (setq doom-modeline-env-ruby-executable "ruby")
-  (setq doom-modeline-env-perl-executable "perl")
-  (setq doom-modeline-env-go-executable "go")
-  (setq doom-modeline-env-elixir-executable "iex")
-  (setq doom-modeline-env-rust-executable "rustc")
-  (setq doom-modeline-env-load-string "...")
-  (setq doom-modeline-always-visible-segments '(mu4e irc))
-  (setq doom-modeline-before-update-env-hook nil)
-  (setq doom-modeline-after-update-env-hook nil)
+  (setq doom-modeline-gnus nil)
+  (setq doom-modeline-irc nil)
+  (setq doom-modeline-remote-host nil)
+  (setq doom-modeline-modal nil)
+  (setq doom-modeline-persp-name nil)
+  (setq doom-modeline-workspace-name nil)
+  (setq doom-modeline-lsp nil)
+  (setq doom-modeline-check nil)
+  (setq doom-modeline-minor-modes nil)
+  (setq doom-modeline-indent-info nil)
+  (setq doom-modeline-buffer-encoding nil)
+  (setq doom-modeline-env-version nil)
   :config
   (doom-modeline-mode 1)
   (set-face-attribute 'doom-modeline nil :background "#1d2021" :foreground "#ebdbb2" :height 0.9)
@@ -97,4 +32,42 @@
   (set-face-attribute 'doom-modeline-urgent nil :foreground "#fb4934" :background "#1d2021")
   (set-face-attribute 'doom-modeline-warning nil :foreground "#fabd2f" :background "#1d2021"))
 
-(provide 'modeline-config)
+(use-package anzu
+  :ensure t
+  :init
+  (global-anzu-mode 1)
+  (setq anzu-cons-mode-line-p nil)
+  (set-face-attribute 'anzu-mode-line nil :foreground "#fabd2f" :background "#282828"))
+
+(use-package rainbow-delimiters
+  :ensure t
+  :hook ((prog-mode text-mode) . rainbow-delimiters-mode)
+  :init
+  (setq rainbow-delimiters-max-face-count 8))
+
+(use-package highlight-parentheses
+  :ensure t
+  :hook ((prog-mode text-mode) . highlight-parentheses-mode)
+  :init
+  (setq highlight-parentheses-colors '("#fb4934" "#fabd2f" "#8ec07c" "#83a598")))
+
+(use-package display-line-numbers
+  :init
+  (setq display-line-numbers-width-start t)
+  (set-face-attribute 'line-number nil :foreground "#a89984" :background "#1d2021")
+  (set-face-attribute 'line-number-current-line nil :foreground "#ebdbb2" :background "#282828" :weight 'bold))
+
+(use-package visual-regexp
+  :ensure t
+  :bind ("C-c r" . vr/query-replace))
+
+(use-package volatile-highlights
+  :ensure t
+  :init
+  (volatile-highlights-mode 1))
+
+(show-paren-mode 1)
+(setq show-paren-delay 0)
+(setq show-paren-ring-bell-on-mismatch t)
+
+(provide 'ui/modeline-config)

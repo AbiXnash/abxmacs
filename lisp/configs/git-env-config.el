@@ -15,4 +15,4 @@
 ;; Makefile
 (add-to-list 'auto-mode-alist '("[Mm]akefile\\'" . makefile-mode))
 
-(provide 'git-env-config)
+(provide 'configs/git-env-config)

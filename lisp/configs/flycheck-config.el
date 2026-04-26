@@ -15,4 +15,4 @@
 (global-set-key (kbd "M-n") 'next-error)
 (global-set-key (kbd "M-p") 'previous-error)
 
-(provide 'flycheck-config)
+(provide 'configs/flycheck-config)

@@ -4,17 +4,22 @@
   :init
   (setq magit-display-buffer-function #'magit-display-buffer-split)
   (setq magit-diff-refine-hunk t)
-  (setq magit-diff-paint-whitespace t)
   (setq magit-section-show-child-count t))
 
 (use-package diff-hl
   :ensure t
   :hook ((magit-pre-refresh . diff-hl-magit-pre-refresh)
-        (magit-post-refresh . diff-hl-magit-post-refresh))
+         (magit-post-refresh . diff-hl-magit-post-refresh))
   :init
-  (global-diff-hl-mode 1)
-  (setq diff-hl-show-hunk-markers t)
-  (setq diff-hl-fringe-bmp 'delta))
+  (global-diff-hl-mode 1))
+
+(add-hook 'diff-hl-mode-hook
+          #'(lambda ()
+             (dolist (f '(diff-hl-added diff-hl-changed diff-hl-deleted diff-hl-modified))
+               (ignore-errors
+                 (and (facep f)
+                      (face-attribute f :background)
+                      (set-face-attribute f nil :background nil))))))
 
 (use-package magit-todos
   :ensure t
@@ -27,4 +32,4 @@
   :ensure t
   :after magit)
 
-(provide 'magit-config)
+(provide 'configs/magit-config)

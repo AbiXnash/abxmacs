@@ -50,4 +50,4 @@
   :config
   (setq dired-subtree-use-backgrounds nil))
 
-(provide 'qol-config)
+(provide 'configs/qol-config)

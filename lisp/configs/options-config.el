@@ -57,4 +57,4 @@
 (add-to-list 'auto-mode-alist '("\\.tmpl\\'" . go-mode))
 (add-to-list 'auto-mode-alist '("\\.gotmpl\\'" . go-mode))
 
-(provide 'options-config)
+(provide 'configs/options-config)

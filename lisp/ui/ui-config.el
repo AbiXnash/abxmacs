@@ -12,4 +12,4 @@
 (global-hl-line-mode 1)
 (show-paren-mode 1)
 
-(provide 'ui-config)
+(provide 'ui/ui-config)

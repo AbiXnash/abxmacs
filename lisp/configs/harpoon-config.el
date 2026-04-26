@@ -46,12 +46,12 @@
                       my/harpoon-list
                       " | ")))
 
-(global-set-key (kbd "C-c h a") #'my/harpoon-add)
-(global-set-key (kbd "C-c h r") #'my/harpoon-remove)
-(global-set-key (kbd "C-c h 1") (lambda () (interactive) (my/harpoon-goto 1)))
-(global-set-key (kbd "C-c h 2") (lambda () (interactive) (my/harpoon-goto 2)))
-(global-set-key (kbd "C-c h 3") (lambda () (interactive) (my/harpoon-goto 3)))
-(global-set-key (kbd "C-c h 4") (lambda () (interactive) (my/harpoon-goto 4)))
-(global-set-key (kbd "C-c h s") #'my/harpoon-show)
+(global-set-key (kbd "C-c p a") #'my/harpoon-add)
+(global-set-key (kbd "C-c p r") #'my/harpoon-remove)
+(global-set-key (kbd "C-c p 1") (lambda () (interactive) (my/harpoon-goto 1)))
+(global-set-key (kbd "C-c p 2") (lambda () (interactive) (my/harpoon-goto 2)))
+(global-set-key (kbd "C-c p 3") (lambda () (interactive) (my/harpoon-goto 3)))
+(global-set-key (kbd "C-c p 4") (lambda () (interactive) (my/harpoon-goto 4)))
+(global-set-key (kbd "C-c p s") #'my/harpoon-show)
 
-(provide 'harpoon-config)
+(provide 'configs/harpoon-config)

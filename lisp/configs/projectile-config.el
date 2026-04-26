@@ -3,4 +3,4 @@
 (setq projectile-project-search-path '("~/dev/" "~/projects/" "~/"))
 (setq projectile-known-projects '())
 
-(provide 'projectile-config)
+(provide 'configs/projectile-config)

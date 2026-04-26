@@ -12,4 +12,7 @@
 (setq use-package-always-ensure t)
 (setq package-native-compile t)
 
-(provide 'package-config)
+(use-package doom-themes
+  :ensure t)
+
+(provide 'configs/package-config)

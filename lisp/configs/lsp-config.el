@@ -82,6 +82,7 @@
   :init
   (setq lsp-keymap-prefix "C-c l")
   :custom
+  (lsp-completion-provider :capf)
   (lsp-log-io nil)
   (lsp-auto-configure t)
   (lsp-enable-file-watchers t)
@@ -198,4 +199,4 @@
 
 ;; dotenv-mode unavailable on package archives
 
-(provide 'lsp-config)
+(provide 'configs/lsp-config)
