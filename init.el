@@ -32,11 +32,13 @@
   (setq doom-themes-enable-italic nil)
   :config
   (load-theme 'doom-gruvbox t)
-  (eval-after-load 'doom-themes
-    '(progn
-       (set-face-foreground 'font-lock-keyword-face "#ea6962")
-       (set-face-foreground 'font-lock-builtin-face "#ea6962")
-       (set-face-foreground 'font-lock-type-face "#ea6962"))))
+  (set-face-foreground 'font-lock-keyword-face "#ea6962")
+  (set-face-foreground 'font-lock-builtin-face "#ea6962")
+  (set-face-foreground 'font-lock-type-face "#ea6962"))
+
+;; Transparent frame
+(setq default-frame-alist '((alpha . 85) (background-color . "unspecified")))
+(set-face-attribute 'default nil :background 'unspecified)
 
 (setq package-selected-packages nil)
 
