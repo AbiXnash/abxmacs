@@ -1,1 +1,1 @@
-("~/dev/game/hyy/" "~/dev/game/ping-pong/" "~/dev/leetcode/" "~/.emacs.d/")
+("~/.emacs.d/" "~/dev/game/ping-pong/" "~/dev/leetcode/" "/opt/homebrew/" "~/dev/game/hyy/")
