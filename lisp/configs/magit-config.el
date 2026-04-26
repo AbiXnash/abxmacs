@@ -11,15 +11,12 @@
   :hook ((magit-pre-refresh . diff-hl-magit-pre-refresh)
          (magit-post-refresh . diff-hl-magit-post-refresh))
   :init
-  (global-diff-hl-mode 1))
-
-(add-hook 'diff-hl-mode-hook
-          #'(lambda ()
-             (dolist (f '(diff-hl-added diff-hl-changed diff-hl-deleted diff-hl-modified))
-               (ignore-errors
-                 (and (facep f)
-                      (face-attribute f :background)
-                      (set-face-attribute f nil :background nil))))))
+  (global-diff-hl-mode 1)
+  (diff-hl-flydiff-mode 1)
+  (setq diff-hl-update-async t)
+  (setq diff-hl-flydiff-delay 0.5)
+  (setq diff-hl-global-modes '(not image-mode pdf-view-mode))
+  (setq diff-hl-draw-borders nil))
 
 (use-package magit-todos
   :ensure t
