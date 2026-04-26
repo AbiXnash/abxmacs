@@ -1,16 +1,9 @@
-(use-package magit
-  :ensure t
-  :bind ("C-c g" . magit-file-dispatch)
-  :init
-  (setq magit-display-buffer-function #'magit-display-buffer-split)
-  (setq magit-diff-refine-hunk t)
-  (setq magit-section-show-child-count t))
+(require 'git-gutter)
+(when (fboundp 'global-git-gutter-mode)
+  (global-git-gutter-mode 1))
 
-(use-package git-gutter
-  :ensure t
-  :hook (prog-mode . git-gutter-mode)
-  :init
-  (setq git-gutter:update-interval 0.02))
+(when (fboundp 'fringe-mode)
+  (fringe-mode 8))
 
 (use-package git-gutter-fringe
   :ensure t
@@ -19,20 +12,9 @@
   (define-fringe-bitmap 'git-gutter-fr:modified [224] nil nil '(center repeated))
   (define-fringe-bitmap 'git-gutter-fr:deleted [128 192 224 240] nil nil 'bottom))
 
-(use-package diff-hl
+(use-package magit
   :ensure t
-  :after (git-gutter git-gutter-fringe)
-  :hook ((magit-pre-refresh . diff-hl-magit-pre-refresh)
-         (magit-post-refresh . diff-hl-magit-post-refresh))
-  :init
-  (global-diff-hl-mode 1))
-
-(use-package magit-todos
-  :ensure t
-  :after magit
-  :init
-  (magit-todos-mode 1)
-  (setq magit-todos-keywords '("TODO" "FIXME" "BUG" "HACK" "NOTE")))
+  :bind ("C-c g" . magit-file-dispatch))
 
 (use-package forge
   :ensure t
