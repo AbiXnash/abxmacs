@@ -6,19 +6,26 @@
   (setq magit-diff-refine-hunk t)
   (setq magit-section-show-child-count t))
 
+(use-package git-gutter
+  :ensure t
+  :hook (prog-mode . git-gutter-mode)
+  :init
+  (setq git-gutter:update-interval 0.02))
+
+(use-package git-gutter-fringe
+  :ensure t
+  :config
+  (define-fringe-bitmap 'git-gutter-fr:added [224] nil nil '(center repeated))
+  (define-fringe-bitmap 'git-gutter-fr:modified [224] nil nil '(center repeated))
+  (define-fringe-bitmap 'git-gutter-fr:deleted [128 192 224 240] nil nil 'bottom))
+
 (use-package diff-hl
   :ensure t
+  :after (git-gutter git-gutter-fringe)
   :hook ((magit-pre-refresh . diff-hl-magit-pre-refresh)
          (magit-post-refresh . diff-hl-magit-post-refresh))
   :init
-  (global-diff-hl-mode 1)
-  (setq diff-hl-show-hunk-markers nil)
-  (setq diff-hl-fringe-bmp nil)
-  :config
-  (set-face-attribute 'diff-hl-added nil :foreground "#ebdbb2")
-  (set-face-attribute 'diff-hl-changed nil :foreground "#ebdbb2")
-  (set-face-attribute 'diff-hl-deleted nil :foreground "#ebdbb2")
-  (set-face-attribute 'diff-hl-modified nil :foreground "#ebdbb2"))
+  (global-diff-hl-mode 1))
 
 (use-package magit-todos
   :ensure t
