@@ -12,7 +12,13 @@
          (magit-post-refresh . diff-hl-magit-post-refresh))
   :init
   (global-diff-hl-mode 1)
-  (setq diff-hl-show-hunk-markers nil))
+  (setq diff-hl-show-hunk-markers nil)
+  (setq diff-hl-fringe-bmp nil)
+  :config
+  (set-face-attribute 'diff-hl-added nil :foreground "#ebdbb2")
+  (set-face-attribute 'diff-hl-changed nil :foreground "#ebdbb2")
+  (set-face-attribute 'diff-hl-deleted nil :foreground "#ebdbb2")
+  (set-face-attribute 'diff-hl-modified nil :foreground "#ebdbb2"))
 
 (use-package magit-todos
   :ensure t
