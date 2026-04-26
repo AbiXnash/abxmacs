@@ -37,8 +37,22 @@
   (set-face-foreground 'font-lock-type-face "#ea6962"))
 
 ;; Transparent frame
-(setq default-frame-alist '((alpha . 85) (background-color . "unspecified")))
+(setq default-frame-alist '((alpha . 90) (background-color . "unspecified")))
 (set-face-attribute 'default nil :background 'unspecified)
+(set-face-attribute 'fringe nil :background 'unspecified)
+(set-face-attribute 'line-number nil :background 'unspecified)
+(set-face-attribute 'line-number-current-line nil :background 'unspecified)
+(set-face-attribute 'vertical-border nil :background 'unspecified)
+
+;; Make faces transparent after startup
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (run-with-timer 1 nil
+                          (lambda ()
+                            (set-face-attribute 'company-tooltip nil :background 'unspecified)
+                            (set-face-attribute 'company-tooltip-selection nil :background 'unspecified)
+                            (set-face-attribute 'line-number nil :background 'unspecified)
+                            (set-face-attribute 'line-number-current-line nil :background 'unspecified)))))
 
 (setq package-selected-packages nil)
 
